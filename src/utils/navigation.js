@@ -40,11 +40,26 @@ export const startViewTransition = () => {
         // Utilizo la API de View Transition API
         document.startViewTransition(() => {
           // Inserto el código HTML anteriormente capturado
-          document.body.innerHTML = data;
+          // document.body.innerHTML = data;
+          updatePageContent(data)
           // Hago que el scroll esté hacia arriba del todo
           document.documentElement.scrollTop = 0;
         });
       }
     });
   });
+};
+
+const updatePageContent = (data) => {
+  // Crear un elemento temporal para analizar el contenido recibido
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = data;
+
+  // Actualizar solo las partes relevantes de la página, por ejemplo, un contenedor específico
+  const contentContainer = document.getElementById("content");
+  if (contentContainer) {
+    contentContainer.innerHTML = tempElement.querySelector("#content").innerHTML;
+  } else {
+    console.warn("No se encontró el contenedor de contenido en la página.");
+  }
 };
