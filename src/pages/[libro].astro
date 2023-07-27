@@ -12,6 +12,16 @@ const info = libros.find((l) => l.id === libro);
 if (!info) {
   return Astro.redirect("/404");
 }
+
+export function getStaticPaths() {
+  // Obtener una lista de todos los valores posibles para "libro"
+  const paths = libros.map((l) => ({ params: { libro: l.id.toString() } }));
+
+  return {
+    paths,
+    fallback: false, // Puedes cambiar esto a "true" si quieres habilitar el fallback para rutas no generadas estáticamente.
+  };
+}
 ---
 
 <Layout title={`${info.titulo}`}>
@@ -24,7 +34,9 @@ if (!info) {
       <BackIcon />
     </div>
 
-    <div class="grid md:grid-cols-[350px_1fr] gap-5 gap-x-12 px-10 md:px-0 mb-10">
+    <div
+      class="grid md:grid-cols-[350px_1fr] gap-5 gap-x-12 px-10 md:px-0 mb-10"
+    >
       <div class="flex flex-col">
         <picture class="mb-8 w-full relative">
           <img
