@@ -4,16 +4,25 @@ const checkIsNavigationSupported = () => {
 };
 
 const fetchPage = async (url) => {
-  // Cargar la página de destino utilizando un fetch para obtener el HTML
-  const response = await fetch(url); // Se obtiene: /el-ojo-del-mundo
+  const response = await fetch(url)
 
-  const text = await response.text();
+  const text = await response.text()
 
-  // Quiero quedarme con el contenido del HTML dentro de la etiqueta body.
-  // Para eso utilizo regex para extraerlo.
-  const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
+  const data = text.match(/<body[^>]*>([\s\S]*)<\/body>/i)[1]
   return data
-};
+}
+
+// const fetchPage = async (url) => {
+//   // Cargar la página de destino utilizando un fetch para obtener el HTML
+//   const response = await fetch(url); // Se obtiene: /el-ojo-del-mundo
+
+//   const text = await response.text();
+
+//   // Quiero quedarme con el contenido del HTML dentro de la etiqueta body.
+//   // Para eso utilizo regex para extraerlo.
+//   const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
+//   return data
+// };
 
 export const startViewTransition = () => {
   if (!checkIsNavigationSupported()) return;
