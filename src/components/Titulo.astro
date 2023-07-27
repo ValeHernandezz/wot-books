@@ -1,0 +1,18 @@
+---
+export interface Props {
+  clase?: string;
+}
+
+const { clase } = Astro.props;
+---
+
+<h1
+  class={`${clase} font-black text-white uppercase text-6xl md:text-8xl text-center py-8 px-5 mb-3`}
+  style="view-transition-name: libro-titulo"
+>
+  Libros de
+  <span
+    class="block text-[27px] md:text-[43px] bg-gradient-to-r text-transparent from-orange-500 to-yellow-300 bg-clip-text"
+    >La Rueda del Tiempo</span
+  >
+</h1>

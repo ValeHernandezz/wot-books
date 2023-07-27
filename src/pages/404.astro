@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Error 404">
+  <main
+    class="max-w-4xl m-auto min-h-screen flex flex-col items-center justify-center text-center bg-black"
+  >
+    <h1 class="text-4xl font-black mb-5 text-white">¡Ojo! Rompiste todo.</h1>
+    <img
+      class="mb-5"
+      src="https://i.pinimg.com/originals/9f/3b/97/9f3b97669a7bd770d8b86e97fb1219eb.gif"
+    />
+
+    <a
+      href="/"
+      type="button"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 rotate-180 w-[40px] justify-center"
+    >
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+      </svg>
+    </a>
+  </main>
+</Layout>

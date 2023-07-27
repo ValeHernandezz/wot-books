@@ -1,0 +1,17 @@
+---
+import LibroItem from "./LibroItem.astro";
+import { libros } from "../data/libros";
+
+---
+
+<ul class="grid grid-cols-2 md:grid-cols-4 gap-3 px-5 pb-10">
+  {
+    libros.map(({ id, titulo, img }) => {
+      return (
+        <li>
+          <LibroItem id={id} titulo={titulo} img={img} />
+        </li>
+      );
+    })
+  }
+</ul>
