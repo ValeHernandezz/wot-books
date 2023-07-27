@@ -13,15 +13,6 @@ if (!info) {
   return Astro.redirect("/404");
 }
 
-export function getStaticPaths() {
-  // Obtener una lista de todos los valores posibles para "libro"
-  const paths = libros.map((l) => ({ params: { libro: l.id.toString() } }));
-
-  return {
-    paths,
-    fallback: false, // Puedes cambiar esto a "true" si quieres habilitar el fallback para rutas no generadas estáticamente.
-  };
-}
 ---
 
 <Layout title={`${info.titulo}`}>
