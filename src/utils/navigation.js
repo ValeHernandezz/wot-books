@@ -4,25 +4,16 @@ const checkIsNavigationSupported = () => {
 };
 
 const fetchPage = async (url) => {
-  const response = await fetch(url)
+  // Cargar la página de destino utilizando un fetch para obtener el HTML
+  const response = await fetch(url) // Se obtiene: /el-ojo-del-mundo
 
   const text = await response.text()
 
+  // Quiero quedarme con el contenido del HTML dentro de la etiqueta body.
+  // Para eso utilizo regex para extraerlo.
   const data = text.match(/<body[^>]*>([\s\S]*)<\/body>/i)[1]
   return data
 }
-
-// const fetchPage = async (url) => {
-//   // Cargar la página de destino utilizando un fetch para obtener el HTML
-//   const response = await fetch(url); // Se obtiene: /el-ojo-del-mundo
-
-//   const text = await response.text();
-
-//   // Quiero quedarme con el contenido del HTML dentro de la etiqueta body.
-//   // Para eso utilizo regex para extraerlo.
-//   const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
-//   return data
-// };
 
 export const startViewTransition = () => {
   if (!checkIsNavigationSupported()) return;
@@ -39,8 +30,7 @@ export const startViewTransition = () => {
         const data = await fetchPage(toUrl.pathname)
         // Utilizo la API de View Transition API
         document.startViewTransition(() => {
-          // Inserto el código HTML anteriormente capturado
-          // document.body.innerHTML = data;
+          // Inserto el código HTML anteriormente capturado con la función updatePageContent
           updatePageContent(data)
           // Hago que el scroll esté hacia arriba del todo
           document.documentElement.scrollTop = 0;

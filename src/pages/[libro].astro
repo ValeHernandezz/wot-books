@@ -2,17 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import BackIcon from "../components/icons/BackIcon.astro";
 import BuyIcon from "../components/icons/BuyIcon.astro";
-import { libros } from "../data/libros";
-import Titulo from "../components/Titulo.astro";
+import Titulo from "../components/layout/Titulo.astro";
+import Rating from "../components/utils/Rating.astro";
+import { libros } from "../data/libros.js";
 
 const { libro } = Astro.params;
 
-const info = libros.find((l) => l.id === libro);
+export const info = libros.find((l) => l.id === libro);
 
 if (!info) {
   return Astro.redirect("/404");
 }
-
 ---
 
 <Layout title={`${info.titulo}`}>
@@ -47,8 +47,126 @@ if (!info) {
           <strong>Autor:</strong>
           <strong class="font-semibold text-white">{info.autor}</strong>
         </p>
+
+        <a
+          id="enlace-comunidad"
+          href="#community-ratings"
+          class="flex items-center mb-5 hover:bg-gray-400 hover:bg-opacity-10 hover:rounded-lg cursor-pointer"
+        >
+          <Rating avgRating={info.rating.avgRating} />
+          <p class="mx-3 text-lg font-medium text-white">
+            {info.rating.avgRating}
+          </p>
+          <p class="text-sm font-medium text-gray-400">
+            {`${info.rating.ratingsCount} calificaciones`}
+          </p>
+          <span class="w-1 h-1 mx-1.5 bg-gray-400 rounded-full"></span>
+          <p class="text-sm font-medium text-gray-400">
+            {`${info.rating.reviewsCount} reseñas`}
+          </p>
+        </a>
+
         <p class="text-lg pb-10">{info.sinopsis}</p>
       </aside>
     </div>
   </main>
+
+  <section
+    id="community-ratings"
+    class="m-auto max-w-4xl px-4 text-white mb-14"
+  >
+    <h2 class="text-1xl md:text-3xl font-black mb-5">
+      Calificaciones de la Comunidad
+    </h2>
+
+    <div class="flex items-center mb-5">
+      <Rating avgRating={info.rating.avgRating} />
+      <p class="mx-3 text-lg font-medium text-white">
+        {info.rating.avgRating}
+      </p>
+      <p class="text-sm font-medium text-gray-400">
+        {`${info.rating.ratingsCount} calificaciones`}
+      </p>
+      <span class="w-1 h-1 mx-1.5 bg-gray-400 rounded-full"></span>
+      <p class="text-sm font-medium text-gray-400">
+        {`${info.rating.reviewsCount} reseñas`}
+      </p>
+    </div>
+
+    <div class="flex items-center mt-4 text-white min-w-full justify-center">
+      <a href="#" class="text-sm font-medium hover:underline">5 estrellas</a>
+      <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
+        <div
+          class="h-5 bg-yellow-300 rounded"
+          style={`width: ${info.rating.communityRatings.fiveStars}%`}
+        >
+        </div>
+      </div>
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+        >{`${info.rating.communityRatings.fiveStars}%`}</span
+      >
+    </div>
+    <div class="flex items-center mt-4 min-w-full justify-center">
+      <a href="#" class="text-sm font-medium hover:underline">4 estrellas</a>
+      <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
+        <div
+          class="h-5 bg-yellow-300 rounded"
+          style={`width: ${info.rating.communityRatings.fourStars}%`}
+        >
+        </div>
+      </div>
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+        >{`${info.rating.communityRatings.fourStars}%`}</span
+      >
+    </div>
+    <div class="flex items-center mt-4 min-w-full justify-center">
+      <a href="#" class="text-sm font-medium hover:underline">3 estrellas</a>
+      <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
+        <div
+          class="h-5 bg-yellow-300 rounded"
+          style={`width: ${info.rating.communityRatings.threeStars}%`}
+        >
+        </div>
+      </div>
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+        >{`${info.rating.communityRatings.threeStars}%`}</span
+      >
+    </div>
+    <div class="flex items-center mt-4 min-w-full justify-center">
+      <a href="#" class="text-sm font-medium hover:underline">2 estrellas</a>
+      <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
+        <div
+          class="h-5 bg-yellow-300 rounded"
+          style={`width: ${info.rating.communityRatings.twoStars}%`}
+        >
+        </div>
+      </div>
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+        >{`${info.rating.communityRatings.twoStars}%`}</span
+      >
+    </div>
+    <div class="flex items-center mt-4 min-w-full justify-center">
+      <a href="#" class="text-sm font-medium hover:underline">1 estrella</a>
+      <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
+        <div
+          class="h-5 bg-yellow-300 rounded"
+          style={`width: ${info.rating.communityRatings.oneStar}%`}
+        >
+        </div>
+      </div>
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+        >{`${info.rating.communityRatings.oneStar}%`}</span
+      >
+    </div>
+  </section>
 </Layout>
+<script>
+  import SmoothScroll from "smooth-scroll";
+
+  const scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 600, // Ajusta la velocidad del desplazamiento (en milisegundos)
+    speedAsDuration: true, // Permite que la velocidad sea interpretada como duración (en milisegundos)
+    easing: "easeInOutQuart", // Añade un efecto de aceleración y desaceleración (opcional)
+    offset: 100, // Desplazamiento adicional (en píxeles) para ajustar la posición final
+  });
+</script>

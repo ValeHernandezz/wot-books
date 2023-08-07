@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const { personaje } = Astro.params;
+console.log(personaje)
+---
+
+<Layout title={personaje}>
+<p>Hola {personaje}</p>
+</Layout>
