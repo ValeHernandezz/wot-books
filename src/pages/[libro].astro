@@ -4,8 +4,8 @@ import BackIcon from "../components/icons/BackIcon.astro";
 import BuyIcon from "../components/icons/BuyIcon.astro";
 import Titulo from "../components/layout/Titulo.astro";
 import StarRating from "../components/utils/StarRating.astro";
-import { libros } from "../data/libros.js";
 import BarRating from "../components/utils/BarRating.astro";
+import { libros } from "../data/libros.js";
 
 const { libro } = Astro.params;
 
@@ -49,12 +49,9 @@ if (!info) {
           <strong class="font-semibold text-white">{info.autor}</strong>
         </p>
 
-        <a
-          id="enlace-comunidad"
-          href="#community-ratings"
-          class="flex items-center mb-5 hover:bg-gray-400 hover:bg-opacity-10 hover:rounded-lg cursor-pointer"
-        >
+        <a id="enlace-comunidad" href="#community-ratings">
           <StarRating
+            clase={"hover:bg-gray-400 hover:bg-opacity-10 hover:rounded-lg cursor-pointer"}
             avgRating={info.rating.avgRating}
             ratingsCount={info.rating.ratingsCount}
             reviewsCount={info.rating.reviewsCount}
@@ -68,29 +65,31 @@ if (!info) {
 
   <section
     id="community-ratings"
-    class="m-auto max-w-4xl px-4 text-white mb-14"
+    class="m-auto max-w-4xl text-white mb-14 px-4"
   >
-    <h2 class="text-1xl md:text-3xl font-black mb-5">
-      Calificaciones de la Comunidad
-    </h2>
+    <div class="px-10 md:px-0">
+      <h2 class="text-2xl md:text-4xl font-black mb-5 text-center">
+        Calificaciones de la Comunidad
+      </h2>
 
-    <div class="flex items-center mb-5">
       <StarRating
+        clase={"justify-center md:scale-125"}
         avgRating={info.rating.avgRating}
         ratingsCount={info.rating.ratingsCount}
         reviewsCount={info.rating.reviewsCount}
       />
-    </div>
 
-    <BarRating
-      fiveStars={info.rating.communityRatings.fiveStars}
-      fourStars={info.rating.communityRatings.fourStars}
-      threeStars={info.rating.communityRatings.threeStars}
-      twoStars={info.rating.communityRatings.twoStars}
-      oneStar={info.rating.communityRatings.oneStar}
-    />
+      <BarRating
+        fiveStars={info.rating.communityRatings.fiveStars}
+        fourStars={info.rating.communityRatings.fourStars}
+        threeStars={info.rating.communityRatings.threeStars}
+        twoStars={info.rating.communityRatings.twoStars}
+        oneStar={info.rating.communityRatings.oneStar}
+      />
+    </div>
   </section>
 </Layout>
+
 <script>
   import SmoothScroll from "smooth-scroll";
 
