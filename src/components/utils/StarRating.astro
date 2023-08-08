@@ -1,12 +1,15 @@
 ---
 export interface Props {
   clase?: string;
-  avgRating: number;
-  ratingsCount: number;
-  reviewsCount: number;
+  rating: {
+    avgRating: number;
+    ratingsCount: number;
+    reviewsCount: number;
+  }
 }
 
-const { clase, avgRating, ratingsCount, reviewsCount } = Astro.props;
+const { clase, rating } = Astro.props;
+const { avgRating, ratingsCount, reviewsCount } = rating;
 ---
 
 <div class={`flex items-center mb-5 ${clase}`}>
