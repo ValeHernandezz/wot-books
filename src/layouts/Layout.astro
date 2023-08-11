@@ -14,15 +14,17 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <!-- <link rel="icon" type="image/svg+xml" href="./public/favicon.png" /> -->
     <title>{title}</title>
     <meta name="view-transition" content="same-origin" />
   </head>
-  <body class="grid min-h-screen grid-rows-[1fr,390px] md:grid-rows-[1fr,300px]">
+
+  <body class="grid min-h-screen md:grid-rows-[1fr,330px]">
     <div id="content">
       <slot />
     </div>
-
+    
     <Footer />
   </body>
 </html>

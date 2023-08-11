@@ -10,53 +10,53 @@ export interface Props {
 }
 
 const { communityRatings } = Astro.props;
-const { fiveStars, fourStars, threeStars, twoStars, oneStar } = communityRatings;
-
+const { fiveStars, fourStars, threeStars, twoStars, oneStar } =
+  communityRatings;
 ---
 
 <div class="flex items-center mt-4 text-white min-w-full justify-center">
-  <a href="#" class="text-sm font-medium hover:underline">5 estrellas</a>
+  <a href="#" class="text-sm font-medium hover:underline w-16">5 estrellas</a>
   <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
     <div class="h-5 bg-yellow-300 rounded" style={`width: ${fiveStars}%`}></div>
   </div>
-  <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+  <span class="text-sm font-medium text-gray-500 dark:text-gray-400 w-[36px]"
     >{`${fiveStars}%`}</span
   >
 </div>
 <div class="flex items-center mt-4 min-w-full justify-center">
-  <a href="#" class="text-sm font-medium hover:underline">4 estrellas</a>
+  <a href="#" class="text-sm font-medium hover:underline w-16">4 estrellas</a>
   <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
     <div class="h-5 bg-yellow-300 rounded" style={`width: ${fourStars}%`}></div>
   </div>
-  <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+  <span class="text-sm font-medium text-gray-500 dark:text-gray-400 w-[36px]"
     >{`${fourStars}%`}</span
   >
 </div>
 <div class="flex items-center mt-4 min-w-full justify-center">
-  <a href="#" class="text-sm font-medium hover:underline">3 estrellas</a>
+  <a href="#" class="text-sm font-medium hover:underline w-16">3 estrellas</a>
   <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
     <div class="h-5 bg-yellow-300 rounded" style={`width: ${threeStars}%`}>
     </div>
   </div>
-  <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+  <span class="text-sm font-medium text-gray-500 dark:text-gray-400 w-[36px]"
     >{`${threeStars}%`}</span
   >
 </div>
 <div class="flex items-center mt-4 min-w-full justify-center">
-  <a href="#" class="text-sm font-medium hover:underline">2 estrellas</a>
+  <a href="#" class="text-sm font-medium hover:underline w-16">2 estrellas</a>
   <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
     <div class="h-5 bg-yellow-300 rounded" style={`width: ${twoStars}%`}></div>
   </div>
-  <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+  <span class="text-sm font-medium text-gray-500 dark:text-gray-400 w-[36px]"
     >{`${twoStars}%`}</span
   >
 </div>
 <div class="flex items-center mt-4 min-w-full justify-center">
-  <a href="#" class="text-sm font-medium hover:underline">1 estrella</a>
+  <a href="#" class="text-sm font-medium hover:underline w-16">1 estrella</a>
   <div class="w-2/4 h-5 mx-4 bg-gray-500 rounded">
     <div class="h-5 bg-yellow-300 rounded" style={`width: ${oneStar}%`}></div>
   </div>
-  <span class="text-sm font-medium text-gray-500 dark:text-gray-400"
+  <span class="text-sm font-medium text-gray-500 dark:text-gray-400 w-[36px]"
     >{`${oneStar}%`}</span
   >
 </div>
